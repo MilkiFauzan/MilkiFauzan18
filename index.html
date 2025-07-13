@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Milki Fauzan - Full-Stack Developer</title>
+    <meta name="description" content="Portofolio Milki Fauzan, seorang Full-Stack Developer dan Japanese Language Specialist.">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-container">
+            <a href="index.html" class="logo">Milki Fauzan</a>
+            <button id="hamburger-btn" class="hamburger-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav id="main-nav" class="main-nav">
+                <ul>
+                    <li><a href="#about">About Me</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#testimonials">Reviews</a></li>
+                    <li><a href="resume.html">Resume</a></li>
+                    <li><a href="#contact" class="btn-contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="hero-section">
+            <div class="hero-background"></div>
+            <div class="hero-content">
+                <h1 class="hero-title">Milki Fauzan</h1>
+                <p class="hero-subtitle">Full-Stack Developer & Japanese Speaker</p>
+                <p class="hero-greeting">Hello / こんにちは！</p>
+                <p class="hero-description">Driven by the challenge of solving complex problems. I transform ideas into functional web applications through full-stack expertise, while my proficiency in Japanese (N3) opens the door to collaboration and innovation without language barriers.</p>
+                <a href="#projects" class="btn-primary">My Projects</a>
+            </div>
+        </section>
+
+        <section id="about" class="about-section content-section">
+            <div class="about-container">
+                <div class="about-image-container">
+                    <img src="Me.jpg" alt="Foto Milki Fauzan" class="profile-photo">
+                </div>
+                <div class="about-text-container">
+                    <h2>About Me</h2>
+                    <p id="bio-text"></p>
+                    <a href="resume.html" class="btn-primary">Access Complete CV</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="projects-section content-section">
+            <h2 class="section-title">Projects</h2>
+            <div id="filter-buttons" class="filter-container">
+                <button class="filter-btn active" data-tech="all">All</button>
+                <button class="filter-btn" data-tech="React">React</button>
+                <button class="filter-btn" data-tech="JavaScript">JavaScript</button>
+                <button class="filter-btn" data-tech="Node.js">Node.js</button>
+            </div>
+            <div id="project-container" class="projects-grid"></div>
+        </section>
+
+        <section id="language-skills" class="language-section content-section">
+            <h2 class="section-title">Language Skill</h2>
+            <div class="certification-card-jp">
+                <div class="lang-icon">🇯🇵</div>
+                <h3>Japanese Language Proficiency Test (JLPT)</h3>
+                <p class="level">Level N3 Certified (2021)</p>
+                <p class="description">Equipped to understand and engage with Japanese in a range of daily scenarios, with proven competency in both reading and conversation.</p>
+                <a href="JLPT N3.jpg" class="hanko-button" target="_blank">
+                    <span class="hanko-text">証明書</span>
+                </a>
+            </div>
+        </section>
+        
+        <section id="testimonials" class="testimonials-section content-section">
+            <h2 class="section-title">Colleague Reviews</h2>
+            <div class="testimonial-slider-container">
+                <div class="testimonial-slider">
+                    <div id="testimonials-track" class="testimonial-track"></div>
+                </div>
+                <button id="prev-btn" class="slider-btn prev">&lt;</button>
+                <button id="next-btn" class="slider-btn next">&gt;</button>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section content-section">
+            <div class="contact-content">
+                <h2 class="section-title">Let's Connect</h2>
+                <p>Want to collaborate or have a project in mind? Feel free to reach out!</p>
+                <div class="contact-grid">
+                    <a href="mailto:mfauzantsany@gmail.com" class="contact-card"><i class="fas fa-envelope"></i><h4>Email Me</h4><p>mfauzantsany@gmail.com</p></a>
+                    <a href="https://www.linkedin.com/in/milki-fauzan-tsany-38b916267/" target="_blank" class="contact-card"><i class="fab fa-linkedin"></i><h4>LinkedIn</h4><p>Milki Fauzan Tsany</p></a>
+                    <a href="https://github.com/MilkiFauzan" target="_blank" class="contact-card"><i class="fab fa-github"></i><h4>GitHub</h4><p>@MilkiFauzan</p></a>
+                </div>
+            </div>
+            <div class="wave-divider">
+                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                    <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+                </svg>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-about">
+                <h4>Milki Fauzan</h4>
+                <p>Full-Stack Developer & Japanese Specialist, creating elegant and robust digital solutions.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#about">About Me</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="resume.html">Resume</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h4>Connect</h4>
+                <div class="footer-social-links">
+                    <a href="mailto:mfauzantsany@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+                    <a href="https://www.linkedin.com/in/milki-fauzan-tsany-38b916267/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/MilkiFauzan" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Copyright &copy; 2025 Milki Fauzan.</p>
+        </div>
+    </footer>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
