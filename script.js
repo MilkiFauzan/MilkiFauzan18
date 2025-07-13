@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // === 2. DATA ===
     const projectData = [
         {
-            image: 'images/background-undangan.png',
+            image: 'background-undangan.png',
             title: 'Website Turnamen Agustusan',
             description: 'Engineered a responsive frontend web application to serve as a centralized platform for Minori Group internal tournaments, streamlining the employee invitation and registration process.',
             frontendTech: ['JavaScript', 'HTML', 'CSS'],
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
             sourceCode: 'https://github.com/MilkiFauzan/Turnamen-Agustusan'
         },
         {
-            image: 'images/Weatherapp.jpg',
+            image: 'Weatherapp.jpg',
             title: 'Weather App',
             description: 'A simple web application that displays real-time weather data from a public API based on the user-searched location.',
             frontendTech: ['JavaScript', 'HTML', 'CSS', 'API'],
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
             sourceCode: 'https://github.com/MilkiFauzan/Aplikasi-Cuaca'
         },
         {
-            image: 'images/Netfl.jpg',
+            image: 'Netfl.jpg',
             title: 'Netflix-clone',
             description: 'Latihan frontend untuk meniru antarmuka pengguna Netflix, fokus pada tata letak CSS Grid & Flexbox.',
             frontendTech: ['HTML', 'CSS Grid', 'Flexbox'],
