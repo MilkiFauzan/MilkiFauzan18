@@ -1,8 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // === 1. ELEMEN DOM ===
+    // === 1. PENGAMBILAN ELEMEN DOM ===
+    const header = document.querySelector('.main-header');
     const hamburgerBtn = document.getElementById('hamburger-btn');
     const mainNav = document.getElementById('main-nav');
+    const navLinks = document.querySelectorAll('.main-nav a');
+    const sections = document.querySelectorAll('.content-section');
+    
     const projectContainer = document.getElementById('project-container');
     const filterButtonsContainer = document.getElementById('filter-buttons');
     const bioTextElement = document.getElementById('bio-text');
@@ -25,11 +29,11 @@ document.addEventListener('DOMContentLoaded', () => {
             description: 'A simple web application that displays real-time weather data from a public API based on the user-searched location.',
             frontendTech: ['JavaScript', 'HTML', 'CSS', 'API'],
             backendTech: [],
-            liveDemo: '#', // Ganti dengan link live Anda jika ada
+            liveDemo: '#',
             sourceCode: 'https://github.com/MilkiFauzan/Aplikasi-Cuaca'
         },
         {
-            image: 'Netfl.jpg',
+            image: 'Netflix-clone.jpg',
             title: 'Netflix-clone',
             description: 'Latihan frontend untuk meniru antarmuka pengguna Netflix, fokus pada tata letak CSS Grid & Flexbox.',
             frontendTech: ['HTML', 'CSS Grid', 'Flexbox'],
@@ -47,12 +51,10 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     // === 3. FUNGSI-FUNGSI ===
-    
-    /**
-     * Mengatur Intersection Observer untuk animasi scroll pada kartu proyek.
-     */
+
     const observeCards = () => {
         const projectCards = document.querySelectorAll('.project-card');
+        if (projectCards.length === 0) return;
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -61,13 +63,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         }, { threshold: 0.1 });
-
         projectCards.forEach(card => observer.observe(card));
     };
     
-    /**
-     * Menampilkan proyek ke dalam container.
-     */
     const displayProjects = (projects) => {
         if (!projectContainer) return;
         projectContainer.innerHTML = projects.map(project => `
@@ -85,13 +83,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             </div>
         `).join('');
-        
-        observeCards(); // Panggil observer untuk kartu baru
+        observeCards();
     };
 
-    /**
-     * Menampilkan testimoni ke dalam track slider.
-     */
     const displayTestimonials = () => {
         if (!testimonialsTrack) return;
         testimonialsTrack.innerHTML = testimonialsData.map(t => `
@@ -101,90 +95,82 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>`).join('');
     };
 
-    /**
-     * Menjalankan logika untuk slider testimoni.
-     */
     const initTestimonialSlider = () => {
         const track = testimonialsTrack;
         const prevBtn = document.getElementById('prev-btn');
         const nextBtn = document.getElementById('next-btn');
-
         if (!track || !prevBtn || !nextBtn) return;
-
         const slides = Array.from(track.children);
         if (slides.length === 0) return;
 
         let currentIndex = 0;
-
         const moveToSlide = (targetIndex) => {
             const slideWidth = slides[0].getBoundingClientRect().width;
             track.style.transform = 'translateX(-' + (slideWidth * targetIndex) + 'px)';
             currentIndex = targetIndex;
         };
-
         const updateButtons = () => {
             prevBtn.style.display = (currentIndex === 0) ? 'none' : 'block';
             nextBtn.style.display = (currentIndex === slides.length - 1) ? 'none' : 'block';
         };
-
         nextBtn.addEventListener('click', () => {
-            if (currentIndex < slides.length - 1) {
-                moveToSlide(currentIndex + 1);
-                updateButtons();
-            }
+            if (currentIndex < slides.length - 1) { moveToSlide(currentIndex + 1); updateButtons(); }
         });
-
         prevBtn.addEventListener('click', () => {
-            if (currentIndex > 0) {
-                moveToSlide(currentIndex - 1);
-                updateButtons();
-            }
+            if (currentIndex > 0) { moveToSlide(currentIndex - 1); updateButtons(); }
         });
-        
+        window.addEventListener('resize', () => moveToSlide(currentIndex));
         updateButtons();
-        
-        // Tambahan: Atur ulang posisi slider jika ukuran window berubah
-        window.addEventListener('resize', () => {
-            moveToSlide(currentIndex);
-        });
     };
 
     // === 4. INISIALISASI & EVENT LISTENERS ===
     
-    // Logika untuk Navigasi Mobile
+    // Logika Navigasi Mobile (Hamburger)
     if (hamburgerBtn && mainNav) {
         hamburgerBtn.addEventListener('click', () => {
             mainNav.classList.toggle('active');
         });
     }
 
-    // Isi biografi
-    if (bioTextElement) {
-        bioTextElement.textContent = biography;
+    // Logika Navbar Dinamis (Scroll & Active Link)
+    if (header) {
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('scrolled', window.scrollY > 50);
+        });
     }
+    const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                navLinks.forEach(link => {
+                    link.classList.remove('active-link');
+                    if (link.getAttribute('href').includes(entry.target.id)) {
+                        link.classList.add('active-link');
+                    }
+                });
+            }
+        });
+    }, { threshold: 0.6 });
+    sections.forEach(section => sectionObserver.observe(section));
+
+    // Isi Konten Dinamis
+    if (bioTextElement) bioTextElement.textContent = biography;
     
-    // Tampilkan testimoni lalu jalankan logika slidernya
     displayTestimonials();
     initTestimonialSlider(); 
 
-    // Atur event listener untuk tombol filter
     if (filterButtonsContainer) {
         filterButtonsContainer.addEventListener('click', (e) => {
             if (e.target.tagName === 'BUTTON') {
                 document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
                 e.target.classList.add('active');
-                
                 const tech = e.target.getAttribute('data-tech');
-                
                 const filteredProjects = tech === 'all' 
                     ? projectData 
                     : projectData.filter(p => (p.frontendTech && p.frontendTech.includes(tech)) || (p.backendTech && p.backendTech.includes(tech)));
-                
                 displayProjects(filteredProjects);
             }
         });
     }
 
-    // Tampilkan proyek di awal
     displayProjects(projectData);
 });
