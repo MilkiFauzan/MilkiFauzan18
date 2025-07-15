@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
             sourceCode: 'https://github.com/MilkiFauzan/Aplikasi-Cuaca'
         },
         {
-            image: 'Netflix-clone.jpg',
+            image: 'Netfl.jpg',
             title: 'Netflix-clone',
             description: 'Latihan frontend untuk meniru antarmuka pengguna Netflix, fokus pada tata letak CSS Grid & Flexbox.',
             frontendTech: ['HTML', 'CSS Grid', 'Flexbox'],
